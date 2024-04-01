@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import models
 from django.contrib.auth.models import User
 
 
@@ -40,3 +41,4 @@ class ItemPedido(models.Model):
     class Meta:
         verbose_name = 'Item do pedido'
         verbose_name_plural = 'Itens do pedido'
+# Create your models here.

@@ -1,10 +1,9 @@
-from django.db import models
 from django.conf import settings
 import os
 from PIL import Image
 from django.db import models
 from django.utils.text import slugify
-
+from utils import utils
 
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
@@ -24,15 +23,17 @@ class Produto(models.Model):
             ('S', 'Simples'),
         )
     )
-
+     
+ 
     def get_preco_formatado(self):
-        return f'R$ {self.preco_marketing:.2f}'.replace('.',',')
-    get_preco_formatado.short_description = "Preço"
-
+     return utils.formata_preco(self.preco_marketing)
+    get_preco_formatado.short_description = 'Preço'
+ 
     def get_preco_promocional_formatado(self):
-        return f'R$ {self.preco_marketing_promocional:.2f}'.replace('.',',')
-    get_preco_promocional_formatado.short_description = "Preço Promo."
-
+     return utils.formata_preco(self.preco_marketing_promocional)
+    get_preco_promocional_formatado.short_description = 'Preço Promo.'
+    
+    
     @staticmethod
     def resize_image(img, new_width=800):
         img_full_path = os.path.join(settings.MEDIA_ROOT, img.name)
@@ -80,3 +81,4 @@ class Variacao(models.Model):
     class Meta:
         verbose_name = 'Variação'
         verbose_name_plural = 'Variações'
+# Create your models here.

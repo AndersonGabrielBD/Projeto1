@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib import admin
 from . import models
 
 
@@ -15,3 +16,4 @@ class PedidoAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Pedido, PedidoAdmin)
 admin.site.register(models.ItemPedido)
+
