@@ -15,11 +15,14 @@ class ListaProdutos(ListView):
      context_object_name = 'produtos'
      paginate_by = 3
 
+
 class DetalheProduto(DetailView):
     model = models.Produto
     template_name = 'produto/detalhe.html'
     context_object_name = 'produto'
     slug_url_kwarg = 'slug'
+
+ 
 
 class AdicionarAoCarrinho(View):
     def get(self, *args, **kwargs):
@@ -110,8 +113,6 @@ class AdicionarAoCarrinho(View):
 
         return redirect(http_referer)
 
-
- 
 
 class RemoverDoCarrinho(View):
      pass
